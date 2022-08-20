@@ -4,7 +4,14 @@ let scoreComputer = 0;
 
 // Random Computer Choiche
 function getComputerChoice() {
-  return Math.floor(Math.random() * choiches.length);
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  if (randomNumber === 1) {
+    return "Rock";
+  } else if (randomNumber === 2) {
+    return "Paper";
+  } else if (randomNumber === 3) {
+    return "Scissor";
+  }
 }
 
 // A round of play
@@ -37,20 +44,20 @@ function getComputerChoice() {
 // }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === "ROCK" && computerSelection === 2) {
+  if (playerSelection === "ROCK" && computerSelection === "Scissor") {
     scorePlayer++;
     return `You Win! ${playerSelection} beats ${computerSelection} !`;
-  } else if (playerSelection === "PAPER" && computerSelection === 0) {
+  } else if (playerSelection === "PAPER" && computerSelection === "Rock") {
     scorePlayer++;
     return `You Win! ${playerSelection} beats ${computerSelection} !`;
-  } else if (playerSelection === "SCISSOR" && computerSelection === 1) {
+  } else if (playerSelection === "SCISSOR" && computerSelection === "Paper") {
     scorePlayer++;
     return `You Win! ${playerSelection} beats ${computerSelection} !`;
   } else if (playerSelection === computerSelection) {
     return "It´s draw!";
   } else {
     scoreComputer++;
-    return `You lost! ${playerSelection} beats ${computerSelection} !`;
+    return `You lost! ${computerSelection} beats ${playerSelection} !`;
   }
 }
 
@@ -58,7 +65,7 @@ function game() {
   for (let i = 0; i < 5; i++) {
     const computerSelection = getComputerChoice();
     const playerSelection = prompt(
-      'Please choose between "Rock, Paper or Scissor'
+      'Please choose between "Rock, Paper or Scissor":'
     ).toUpperCase();
     console.log(playRound(playerSelection, computerSelection));
     console.log(`Your score ${scorePlayer}. Computers score: ${scoreComputer}`);
