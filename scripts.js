@@ -7,6 +7,9 @@ const roundText = document.querySelector("#roundText");
 const resultText = document.querySelector("#resultText");
 const currentScore = document.querySelector("#currentScore");
 
+let scorePlayerDom = document.querySelector("#playerScore");
+let scoreComputerDom = document.querySelector("#computerScore");
+
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach((button) => {
@@ -24,32 +27,33 @@ buttons.forEach((button) => {
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
   if (randomNumber === 1) {
-    computerChoice = "Rock";
+    computerChoice = "rock";
     return;
   } else if (randomNumber === 2) {
-    computerChoice = "Paper";
+    computerChoice = "paper";
     return;
   } else if (randomNumber === 3) {
-    computerChoice = "Scissor";
+    computerChoice = "scissor";
     return;
   }
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerChoice === "rock" && computerChoice === "Scissor") {
+  if (playerChoice === "rock" && computerChoice === "scissor") {
     scorePlayer++;
     roundText.textContent = `You Win! ${playerChoice} beats ${computerChoice} !`;
     return;
-  } else if (playerChoice === "paper" && computerChoice === "Rock") {
+  } else if (playerChoice === "paper" && computerChoice === "rock") {
     scorePlayer++;
     roundText.textContent = `You Win! ${playerChoice} beats ${computerChoice} !`;
     return;
-  } else if (playerChoice === "scissor" && computerChoice === "Paper") {
+  } else if (playerChoice === "scissor" && computerChoice === "paper") {
     scorePlayer++;
     roundText.textContent = `You Win! ${playerChoice} beats ${computerChoice} !`;
     return;
   } else if (playerChoice === computerChoice) {
-    return "It´s draw!";
+    roundText.textContent = "It´s draw!";
+    return;
   } else {
     scoreComputer++;
     roundText.textContent = `You lost! ${computerChoice} beats ${playerChoice} !`;
@@ -59,7 +63,8 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   playRound(playerChoice, computerChoice);
-  currentScore.textContent = `Your score ${scorePlayer}. Computers score: ${scoreComputer}`;
+  scorePlayerDom.textContent = `${scorePlayer}`;
+  scoreComputerDom.textContent = `${scoreComputer}`;
   // Call check winner function
   checkWinner();
 }
@@ -67,7 +72,13 @@ function game() {
 function checkWinner() {
   if (scorePlayer === 5) {
     resultText.textContent = `You won the game! Your score was ${scorePlayer} computers score was ${scoreComputer}.`;
+    document.getElementById("rock").style.display = "none";
+    document.getElementById("paper").style.display = "none";
+    document.getElementById("scissor").style.display = "none";
   } else if (scoreComputer === 5) {
     resultText.textContent = `You lost the game! Your score was ${scorePlayer} and the computers score was ${scoreComputer}.`;
+    document.getElementById("rock").style.display = "none";
+    document.getElementById("paper").style.display = "none";
+    document.getElementById("scissor").style.display = "none";
   }
 }

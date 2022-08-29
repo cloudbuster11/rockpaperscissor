@@ -8,18 +8,27 @@
     <title>Rock, Paper, Scissor Game.</title>
   </head>
   <body>
-    <div id="container">
-      <div id="btn-container">
-        <button class="btn" id="rock">Rock</button>
-        <button class="btn" id="paper">Paper</button>
-        <button class="btn" id="scissor">Scissor</button>
+    <header>
+      <h1>Rock, Paper & Scissor</h1>
+      <h2>Your score - Computers score</h2>
+      <div id="scoreContainer">
+        <p id="playerScore">0</p>
+        <p>-</p>
+        <p id="computerScore">0</p>
       </div>
-      <div id="text-container">
-        <div id="currentScore"></div>
-        <div id="roundText"></div>
-        <div id="resultText"></div>
-      </div>
+    </header>
+
+    <div id="btn-container">
+      <button class="btn" id="rock">Rock</button>
+      <button class="btn" id="paper">Paper</button>
+      <button class="btn" id="scissor">Scissor</button>
     </div>
+
+    <div id="text-container">
+      <div id="roundText"></div>
+      <div id="resultText"></div>
+    </div>
+
     <script src="scripts.js"></script>
   </body>
 </html>
