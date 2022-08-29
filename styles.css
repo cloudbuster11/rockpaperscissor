@@ -1,0 +1,12 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#container {
+  background-color: coral;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: ;
+}
